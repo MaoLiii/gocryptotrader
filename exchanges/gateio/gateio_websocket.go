@@ -476,6 +476,7 @@ func (g *Gateio) processSpotOrders(data []byte) error {
 			ExecutedAmount: resp.Result[x].Amount.Float64() - resp.Result[x].Left.Float64(),
 			Date:           resp.Result[x].CreateTimeMs.Time(),
 			LastUpdated:    resp.Result[x].UpdateTimeMs.Time(),
+			ClientOrderID:  resp.Result[x].Text,
 		}
 	}
 	g.Websocket.DataHandler <- details
